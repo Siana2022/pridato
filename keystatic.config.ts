@@ -1,7 +1,17 @@
 import { config, fields, collection } from '@keystatic/core'
 
+// Si KEYSTATIC_GITHUB_CLIENT_ID está definido (en Vercel), usa GitHub como storage.
+// En local sin esa variable, usa archivos locales.
+const storage =
+  process.env.KEYSTATIC_GITHUB_CLIENT_ID
+    ? ({
+        kind: 'github',
+        repo: 'Siana2022/pridato',
+      } as const)
+    : ({ kind: 'local' } as const)
+
 export default config({
-  storage: { kind: 'local' },
+  storage,
   ui: {
     brand: { name: 'PRIDATO Blog' },
   },
