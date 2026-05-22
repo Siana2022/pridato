@@ -1,9 +1,10 @@
 import { config, fields, collection } from '@keystatic/core'
 
-// Si KEYSTATIC_GITHUB_CLIENT_ID está definido (en Vercel), usa GitHub como storage.
-// En local sin esa variable, usa archivos locales.
+// NEXT_PUBLIC_KEYSTATIC_GITHUB=true → modo GitHub (Vercel producción)
+// Sin esa variable → modo local (desarrollo)
+// Usar NEXT_PUBLIC_ para que el valor llegue también al navegador (cliente).
 const storage =
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID
+  process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB === 'true'
     ? ({
         kind: 'github',
         repo: 'Siana2022/pridato',
