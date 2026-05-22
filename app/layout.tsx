@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import CookieBanner from '@/components/CookieBanner'
-import BackToTop from '@/components/BackToTop'
-import PageScripts from '@/components/PageScripts'
+import SiteShell from '@/components/SiteShell'
 
 export const metadata: Metadata = {
   title: 'PRIDATO · Consultoría en Privacidad y Cumplimiento Normativo Digital',
@@ -23,12 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="stylesheet" href="/css/style.css" />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <CookieBanner />
-        <BackToTop />
-        <PageScripts />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   )
